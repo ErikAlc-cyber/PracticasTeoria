@@ -5,18 +5,21 @@ import time
 import sys
 
 class Combinacion:
+    """Creates an object that will store all the caracteristics of the combinations"""
     def __init__(self, combinacion, numero_de_1, largo):
         self.numero = combinacion
         self.numero_de_1 = numero_de_1
         self.largo = largo
  
 def contador(numero):
+    """Function that will return how many oones an combination has"""
     unos = 0
     for i in numero:
         unos += int(i)
     return unos
  
 def longitud(string):
+    """Function that return the lenght of a given string"""
     lon = 0
     for i in string:
         if i != "\n" or i != "\0":
@@ -24,6 +27,7 @@ def longitud(string):
     return lon
  
 def bina(decimal):
+    """Transform an decimal value into an binary string"""
         
     binario = str(bin(decimal))[2:]
     unos = contador(binario)
@@ -31,6 +35,7 @@ def bina(decimal):
     return Combinacion(binario, unos, longitud(binario))
 
 def ingerir(unos, largo):
+    """Create various grafics"""
     
     graficar(unos, "Combinaciones posibles", "# de unos")
     graficar(largo, "Combinaciones posibles", "# de digitos")
@@ -39,15 +44,18 @@ def ingerir(unos, largo):
     graficar(logrec(largo), "Combinaciones posibles log10", "# de digitos")
     
 def logrec(array):
+    """Reads an string and calculate log10 of every element"""
     aux=[]
     for i in array:
         if i == 0:
+            #If log gets an 0 or less, then we will get an math error
             pass
         else:
             aux.append(math.log10(int(i)))
     return aux
     
 def graficar(y_axis, titlex, titley):
+    """Function to create a graph"""
     try:
         inicio = time.time()
         ax = plt.subplot()
@@ -67,6 +75,7 @@ def graficar(y_axis, titlex, titley):
         
 
 if __name__ == "__main__":
+    """Main function"""
     while True:
         print("1) Realizar un nuevo calculo del universo")
         print("2) Salir")

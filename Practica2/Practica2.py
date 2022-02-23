@@ -3,7 +3,6 @@ import random
 import matplotlib.pyplot as plt
 import os
 import time
-from os import remove
 
 class Combinacion:
     def __init__(self, combinacion, numero_de_1, largo):
@@ -59,16 +58,6 @@ def ingerir():
     out_file.write("L{e") #escribo info en el txt
     
     combinaciones=cleartext(out_file, "combinaciones.txt")
-    
-    out_file.write("}\n")
-    out_file.write("#1's{e")
-    
-    unos=cleartext(out_file, "unos.txt")
-    
-    out_file.write("}\n")
-    out_file.write("# de Digitos{e")
-    
-    largo=cleartext(out_file, "largo.txt")
     
     out_file.write("}\n")
     out_file.close() 
@@ -131,9 +120,6 @@ if __name__ == "__main__":
             check = True
             count = 1
             
-            filec = open("combinaciones.txt", "w")
-            fileu = open("unos.txt", "w")
-            filel = open("largo.txt", "w")
             filep = open("primos.txt", "w")
             
             inicio = time.time()
@@ -142,17 +128,11 @@ if __name__ == "__main__":
                     cadena = bina(count)
                     if(primo(count)):
                         filep.write(str(cadena.numero)+"--"+ str(count)+" \n")
-                    filec.write(str(cadena.numero)+"\n")
-                    fileu.write(str(cadena.numero_de_1)+"\n")
-                    filel.write(str(cadena.largo)+"\n")
                     count += 1
                     check = cadena.numero_de_1 != n
                     del cadena
                     
                 except BufferError:
-                    filec.close()
-                    fileu.close()
-                    filel.close()
                     filep.close()
                     exit()
                     
@@ -160,9 +140,6 @@ if __name__ == "__main__":
                     break
 
             fin = time.time()
-            filec.close()
-            fileu.close()
-            filel.close()
             filep.close()
             print("El tiempo de ejecucion para n = "+str(n)+" es: "+str(fin-inicio))
             del inicio
