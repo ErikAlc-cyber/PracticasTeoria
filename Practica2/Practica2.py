@@ -18,14 +18,7 @@ def contador(numero):
  
 def bina(decimal):
         
-    binario = 0
-    mult = 1
-
-    while decimal != 0:
-        binario = binario + decimal % 2 * mult
-        decimal //= 2
-        mult *= 10
-    
+    binario = str(bin(decimal))[2:]
     strbinario = str(binario)
     unos = contador(strbinario)
     
@@ -110,8 +103,9 @@ if __name__ == "__main__":
                     print("Error, el numero introducido no es valido")
                     break
             
-            elif aux ==2:
+            elif aux == 2:
                 n = random.randrange(2,2e7)
+                print(n)
             
             else:
                 print("Error, seleccione una opcion correcta")
@@ -119,12 +113,12 @@ if __name__ == "__main__":
             
             file1 = open("Practica2/aux1.txt", "w")
             file2 = open("Practica2/aux2.txt", "w")
-            lim = int(math.pow(2, n))
+            lim = math.pow(2, n)
             unos = []
             largos = []
             inicio = time.time()
             
-            for count in range(lim):
+            for count in range(int(lim)):
                 try:
                     if(primo(count)) and count != 0:
                         cadena = bina(count)

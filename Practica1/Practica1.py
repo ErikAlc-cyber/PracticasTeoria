@@ -35,7 +35,7 @@ def bina(decimal):
     return Combinacion(binario, unos, longitud(binario))
 
 def ingerir(unos, largo):
-    """Create various grafics"""
+    """Create various graphics"""
     
     graficar(unos, "Combinaciones posibles", "# de unos")
     graficar(largo, "Combinaciones posibles", "# de digitos")
@@ -104,8 +104,7 @@ if __name__ == "__main__":
             unos = []
             largo = []
             
-            filec = open("resultados.txt", "w") 
-            filep = open("primos.txt", "w")
+            filec = open("resultados.txt", "w")
             filec.write('Σ^* = { ε, \n')
             
             inicio = time.time()
@@ -123,7 +122,6 @@ if __name__ == "__main__":
             filec.write("}")
             fin = time.time()
             filec.close()
-            filep.close()
             print(sys.getsizeof(unos))
             print(sys.getsizeof(largo))
             print("El tiempo de ejecucion para n = "+str(n)+" es: "+str(fin-inicio))
