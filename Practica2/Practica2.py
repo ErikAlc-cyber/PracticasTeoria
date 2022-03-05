@@ -61,12 +61,6 @@ def ingerir():
     
     out_file.write("}\n")
     out_file.close() 
-
-    #graficar(combinaciones, unos, "Combinaciones posibles", "# de unos")
-    #graficar(combinaciones, largo, "Combinaciones posibles", "# de digitos")
-    
-    #graficar(combinaciones, logrec(unos), "Combinaciones posibles log10", "# de unos")
-    #graficar(combinaciones, logrec(largo), "Combinaciones posibles log10", "# de digitos")
     
 def logrec(array):
     aux=[]
@@ -90,7 +84,6 @@ def graficar(x_axis, y_axis, titlex, titley):
     except (KeyboardInterrupt, BufferError):
         fin = time.time()
         print("El tiempo de ejecucion para la grafica: "+titlex+", "+titley+" es: "+str(fin-inicio))
-        pass
 
 if __name__ == "__main__":
     while True:
@@ -112,6 +105,7 @@ if __name__ == "__main__":
             
             elif aux ==2:
                 n = random.randrange(0,1000)
+                n = random.randrange(2,2e7)
             
             else:
                 print("Error, seleccione una opcion correcta")
@@ -123,12 +117,19 @@ if __name__ == "__main__":
             filep = open("primos.txt", "w")
             
             inicio = time.time()
-            while check:
+            
+            file1 = open("Practica2/aux1.txt", "w")
+            file2 = open("Practica2/aux2.txt", "w")
+            lim = int(math.pow(2, n))
+            unos = []
+            largos = []
+            inicio = time.time()
+            
+            for count in range(lim):
                 try:
                     cadena = bina(count)
                     if(primo(count)):
                         filep.write(str(cadena.numero)+"--"+ str(count)+" \n")
-                    count += 1
                     check = cadena.numero_de_1 != n
                     del cadena
                     
