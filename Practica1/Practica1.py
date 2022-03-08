@@ -1,16 +1,8 @@
 import math
-import random
 import matplotlib.pyplot as plt
 import time
 import sys
 
-class Combinacion:
-    """Creates an object that will store all the caracteristics of the combinations"""
-    def __init__(self, combinacion, numero_de_1, largo):
-        self.numero = combinacion
-        self.numero_de_1 = numero_de_1
-        self.largo = largo
- 
 def contador(numero):
     """Function that will return how many oones an combination has"""
     unos = 0
@@ -25,17 +17,9 @@ def longitud(string):
         if i != "\n" or i != "\0":
             lon += 1
     return lon
- 
-def bina(decimal):
-    """Transform an decimal value into an binary string"""
-        
-    binario = str(bin(decimal))[2:]
-    unos = contador(binario)
-    
-    return Combinacion(binario, unos, longitud(binario))
 
 def ingerir(unos, largo):
-    """Create various graphics"""
+    """Create various grafics"""
     
     graficar(unos, "Combinaciones posibles", "# de unos")
     graficar(largo, "Combinaciones posibles", "# de digitos")
@@ -76,65 +60,4 @@ def graficar(y_axis, titlex, titley):
 
 if __name__ == "__main__":
     """Main function"""
-    while True:
-        print("1) Realizar un nuevo calculo del universo")
-        print("2) Salir")
-        opc = int(input("Seleccione una opcion: "))
-        
-        if opc == 1:
-            print("\n")
-            print("1) Modo manual: ")
-            print("2) Modo automatico: ")
-            aux = int(input("Seleccione una opcion: "))
-            
-            if aux == 1:
-                n = int(input("\nIntroduce n, no mayor a 1000 ni menor a 0: "))
-                if 1000 < n < 0:
-                    print("Error, el numero introducido no es valido")
-                    break
-            
-            elif aux ==2:
-                n = random.randint(1,1000)
-            
-            else:
-                print("Error, seleccione una opcion correcta")
-                break
-            
-            lim = pow(2, n)
-            unos = []
-            largo = []
-            
-            filec = open("resultados.txt", "w")
-            filec.write('Σ^* = { ε, \n')
-            
-            inicio = time.time()
-            for i in range (lim):
-                try:
-                    cadena = bina(i)
-                    filec.write(str(cadena.numero)+",\n")
-                    unos.append(cadena.numero_de_1)
-                    largo.append(cadena.largo)
-                    del cadena
-                    
-                except (KeyboardInterrupt, BufferError):
-                    break
-
-            filec.write("}")
-            fin = time.time()
-            filec.close()
-            print(sys.getsizeof(unos))
-            print(sys.getsizeof(largo))
-            print("El tiempo de ejecucion para n = "+str(n)+" es: "+str(fin-inicio))
-            del inicio
-            del fin
-            del aux
-            del opc
-            del n
-            ingerir(unos, largo)
-            
-            
-        elif opc == 2:
-            exit()
-        
-        else:
-            print("Error, seleccione una opcion correcta\n")
+    print("Welcome to python baby")
