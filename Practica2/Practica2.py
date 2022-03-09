@@ -1,35 +1,23 @@
-import math
 import random
 import matplotlib.pyplot as plt
 import os
+import itertools
 import time
+import math
 
-class Combinacion:
-    def __init__(self, combinacion, numero_de_1, largo):
-        self.numero = combinacion
-        self.numero_de_1 = numero_de_1
-        self.largo = largo
- 
-def contador(numero):
-    unos = 0
-    for i in numero:
-        unos += int(i)
-    return unos
- 
-def bina(decimal):
-        
-    binario = 0
-    mult = 1
-
-    while decimal != 0:
-        binario = binario + decimal % 2 * mult
-        decimal //= 2
-        mult *= 10
+def ingerir(unos, largo):
+    """Create various grafics"""
     
-    strbinario = str(binario)
-    unos = contador(strbinario)
+    graficar(unos, "2^n", "# de unos")
+    graficar(largo, "2^n", "# de digitos")
+    graficar(logrec(unos), "2^n", "log10(# de unos)")
+    graficar(logrec(largo), "2^n", "log10(# de digitos)")
     
-    return Combinacion(binario, unos, len(strbinario))
+def logrec(array):
+    aux=[]
+    for i in array:
+        aux.append(math.log10(int(i)))
+    return aux
 
 def primo(numero):
     if numero == 4:
@@ -39,121 +27,107 @@ def primo(numero):
             return False
     return True
 
-def cleartext(out_file, file):
-    array=[]
-    in_file=open(file, "r")
-    while True:
-        file_line = in_file.readline()
-        if not file_line:
-            in_file.close() #cierro el archivo
-            break
-        array.append(file_line)
-        out_file.write(","+file_line.strip('\n'))
-    os.remove(file)
-    return array
-
-def ingerir():
-    
-    out_file = open("resultados.txt", "w") #Abre el txt 
-    out_file.write("L{e") #escribo info en el txt
-    
-    combinaciones=cleartext(out_file, "combinaciones.txt")
-    
-    out_file.write("}\n")
-    out_file.close() 
-    
-def logrec(array):
-    aux=[]
-    for i in array:
-        aux.append(math.log10(int(i)))
-    return aux
-    
-def graficar(x_axis, y_axis, titlex, titley):
+def graficar(y_axis, titlex, titley):
+    """Function to create a graph"""
     try:
         inicio = time.time()
-        fig, ax = plt.subplots()
-        ax.set_ylabel(titley)
-        ax.set_title(titlex)
-        ax.grid(False);
-        ax.plot(x_axis,y_axis)
-        ax.autoscale(enable=True, axis='both', tight=None)
-        plt.show()
+        ax = plt.subplot()
+        plt.xlabel(titlex)
+        plt.ylabel(titley)
+        plt.title(titlex + " y "+titley)
+        ax.plot(y_axis)
         fin = time.time()
+        plt.show()
         print("El tiempo de ejecucion para la grafica: "+titlex+", "+titley+" es: "+str(fin-inicio))
+        plt.savefig(titlex+titley+".png")
         
     except (KeyboardInterrupt, BufferError):
         fin = time.time()
+        plt.show()
         print("El tiempo de ejecucion para la grafica: "+titlex+", "+titley+" es: "+str(fin-inicio))
-
-if __name__ == "__main__":
-    while True:
-        print("1) Realizar un nuevo calculo del universo")
-        print("2) Salir")
-        opc = int(input("Seleccione una opcion: "))
+    
+def permutaciones(bit):
+    
+    in_file=open("Practica1/permutaciones.txt", "w")
+    in_file.write("L{e\n")
+    inicio = time.time()
+    i = 0
+    num_unos = []
+    num_digitos = []
+    
+    while(i < bit):
         
-        if opc == 1:
-            print("\n")
-            print("1) Modo manual: ")
-            print("2) Modo automatico: ")
-            aux = int(input("Seleccione una opcion: "))
+        liminf = 2**i
+        limsup = (2**(i+1))
+        limmed = math.floor(limsup/4)
+        unos = 0
+        
+        try:
+            subsets = list(itertools.islice(itertools.product(*[[0,1]]*(i+1)), liminf, limmed))
+            in_file.write(","+' '.join(map(str, subsets)))
+            unos += sum(map(sum, subsets))
+            #print(subsets)
+            del subsets
             
-            if aux == 1:
-                n = int(input("\nIntroduce n, no mayor a 1000 ni menor a 0: "))
-                if 1000 < n < 0:
-                    print("Error, el numero introducido no es valido")
-                    break
+            subsets = list(itertools.islice(itertools.product(*[[0,1]]*(i+1)), limmed, (limmed*2)))
+            in_file.write(' '.join(map(str, subsets)))
+            unos += sum(map(sum, subsets))
+            #print(subsets)
+            del subsets
             
-            elif aux ==2:
-                n = random.randrange(0,1000)
-                n = random.randrange(2,2e7)
+            subsets = list(itertools.islice(itertools.product(*[[0,1]]*(i+1)), (limmed*2), (limmed*3)))
+            in_file.write(' '.join(map(str, subsets)))
+            unos += sum(map(sum, subsets))
+            #print(subsets)
+            del subsets
             
-            else:
-                print("Error, seleccione una opcion correcta")
+            subsets = list(itertools.islice(itertools.product(*[[0,1]]*(i+1)), (limmed*3), limsup))
+            in_file.write(' '.join(map(str, subsets))+"\n")
+            unos += sum(map(sum, subsets))
+            #print(subsets)
+            del subsets
+            
+            i += 1
+            num_unos.append(unos)  
+            num_digitos.append(i)     
+            del unos
+            
+        except (KeyboardInterrupt,OverflowError):
+            break
+    
+    in_file.write("}")
+    in_file.close()
+    print(num_unos)
+    
+    fin = time.time()
+    
+    print("El tiempo de ejecucion es: "+str(fin-inicio))
+    ingerir(num_unos, num_digitos)
+        
+            
+if __name__ == "__main__":
+    """Main function"""
+    
+    while True:
+        print("\nMENU")
+        print("1) Modo manual")
+        print("2) Modo automatico")
+        print("3) Salir")
+        aux = int(input("Seleccione una opcion: "))
+            
+        if aux == 1:
+            n = int(input("\nIntroduce n, no mayor a 2e7 ni menor a 2: "))
+            if 2e7 < n < 2:
+                print("Error, el numero introducido no es valido")
                 break
+            permutaciones(n)
+        elif aux ==2:
+            n = random.randrange(2,2e7)
+            permutaciones(n)
             
-            check = True
-            count = 1
-            
-            filep = open("primos.txt", "w")
-            
-            inicio = time.time()
-            
-            file1 = open("Practica2/aux1.txt", "w")
-            file2 = open("Practica2/aux2.txt", "w")
-            lim = int(math.pow(2, n))
-            unos = []
-            largos = []
-            inicio = time.time()
-            
-            for count in range(lim):
-                try:
-                    cadena = bina(count)
-                    if(primo(count)):
-                        filep.write(str(cadena.numero)+"--"+ str(count)+" \n")
-                    check = cadena.numero_de_1 != n
-                    del cadena
-                    
-                except BufferError:
-                    filep.close()
-                    exit()
-                    
-                except KeyboardInterrupt:
-                    break
-
-            fin = time.time()
-            filep.close()
-            print("El tiempo de ejecucion para n = "+str(n)+" es: "+str(fin-inicio))
-            del inicio
-            del fin
-            del aux
-            del opc
-            del n
-            del count
-            ingerir()
-            
-            
-        elif opc == 2:
-            exit()
+        elif aux == 3:
+            exit()    
         
         else:
-            print("Error, seleccione una opcion correcta\n")
+            print("Error, seleccione una opcion correcta")
+            break
