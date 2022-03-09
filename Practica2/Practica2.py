@@ -1,12 +1,14 @@
 import random
+from cupshelpers import Printer
 import matplotlib.pyplot as plt
-import os
 import itertools
 import time
 import math
 
+#Mausque herramienta para mas tarde: liminf, limmed
+
 def ingerir(unos, largo):
-    """Create various grafics"""
+    """Create various graphics"""
     
     graficar(unos, "2^n", "# de unos")
     graficar(largo, "2^n", "# de digitos")
@@ -14,18 +16,11 @@ def ingerir(unos, largo):
     graficar(logrec(largo), "2^n", "log10(# de digitos)")
     
 def logrec(array):
+    """Apply Log base 10 to every element in array"""
     aux=[]
     for i in array:
         aux.append(math.log10(int(i)))
     return aux
-
-def primo(numero):
-    if numero == 4:
-        return False
-    for x in range(2, int(numero/2)):
-        if numero % x == 0:
-            return False
-    return True
 
 def graficar(y_axis, titlex, titley):
     """Function to create a graph"""
@@ -46,9 +41,36 @@ def graficar(y_axis, titlex, titley):
         plt.show()
         print("El tiempo de ejecucion para la grafica: "+titlex+", "+titley+" es: "+str(fin-inicio))
     
-def permutaciones(bit):
+def logic(array):
+        dec = int(array,2)
+        if(isPrime(dec)):
+            return array, dec
     
-    in_file=open("Practica1/permutaciones.txt", "w")
+def convertTuple(tup):
+        # initialize an empty string
+    stri = ''
+    for item in tup:
+        stri = stri + str(item)
+    return stri
+    
+def isPrime(n):
+    """Check if number is prime"""
+     
+    # Corner case
+    if (n <= 1):
+        return False
+ 
+    # Check from 2 to sqrt(n)
+    for i in range(2, int(math.sqrt(n))+1):
+        if (n % i == 0):
+            return False
+ 
+    return True
+    
+def permutaciones(bit):
+    """Create all permutation possible for n bits"""
+    
+    in_file=open("Practica2/permutaciones.txt", "w")
     in_file.write("L{e\n")
     inicio = time.time()
     i = 0
