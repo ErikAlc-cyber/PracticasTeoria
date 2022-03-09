@@ -11,7 +11,7 @@ def ingerir(unos, largo):
     graficar(unos, "2^n", "# de unos")
     graficar(largo, "2^n", "# de digitos")
     graficar(logrec(unos), "2^n", "log10(# de unos)")
-    graficar(logrec(largo), "2^n", "# de digitos")
+    graficar(logrec(largo), "2^n", "log10(# de digitos)")
     
 def logrec(array):
     aux=[]
