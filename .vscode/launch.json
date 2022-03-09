@@ -9,9 +9,9 @@
         ""
       ],
       "stopAtEntry": false,
-      "cwd": "/home/ehelmirv/Documents/PracticasTeoria/Practica2",
+      "cwd": "/home/valhirex/Desktop/PracticasTeoria/Companero",
       "environment": [],
-      "program": "/home/ehelmirv/Documents/PracticasTeoria/Practica2/build/Debug/outDebug",
+      "program": "/home/valhirex/Desktop/PracticasTeoria/Companero/build/Debug/outDebug",
       "internalConsoleOptions": "openOnSessionStart",
       "MIMode": "gdb",
       "miDebuggerPath": "/usr/bin/gdb",
