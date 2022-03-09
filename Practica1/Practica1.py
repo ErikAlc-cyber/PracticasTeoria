@@ -19,14 +19,6 @@ def logrec(array):
         aux.append(math.log10(int(i)))
     return aux
 
-def primo(numero):
-    if numero == 4:
-        return False
-    for x in range(2, int(numero/2)):
-        if numero % x == 0:
-            return False
-    return True
-
 def graficar(y_axis, titlex, titley):
     """Function to create a graph"""
     try:
