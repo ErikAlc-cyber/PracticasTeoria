@@ -1,0 +1,9 @@
+\contentsline {section}{\numberline {1}Introducción}{2}{}%
+\contentsline {section}{\numberline {2}Marco Teorico}{2}{}%
+\contentsline {section}{\numberline {3}Desarrollo}{3}{}%
+\contentsline {subsection}{\numberline {3.1}Programa 1 - Universo}{3}{}%
+\contentsline {subsection}{\numberline {3.2}Planteamiento}{3}{}%
+\contentsline {subsection}{\numberline {3.3}Codigo}{3}{}%
+\contentsline {section}{\numberline {4}Resultados}{7}{}%
+\contentsline {section}{\numberline {5}Conclusión}{11}{}%
+\contentsline {section}{\numberline {6}Referencias bibliograficas}{11}{}%

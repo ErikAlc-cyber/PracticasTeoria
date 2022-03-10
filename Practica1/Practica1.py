@@ -1,6 +1,5 @@
 import random
 import matplotlib.pyplot as plt
-import os
 import itertools
 import time
 import math

@@ -41,12 +41,8 @@ def graficar(y_axis, titlex, titley):
         plt.show()
         print("El tiempo de ejecucion para la grafica: "+titlex+", "+titley+" es: "+str(fin-inicio))
     
-def logic(array):
-        dec = int(array,2)
-        if(isPrime(dec)):
-            return array, dec
-    
-def convertTuple(tup):
+def convert_tuple(tup):
+    """Convert tuples to strings"""
         # initialize an empty string
     stri = ''
     for item in tup:
@@ -66,7 +62,12 @@ def isPrime(n):
             return False
  
     return True
-    
+
+def logic(array):
+        dec = int(array,2)
+        if(isPrime(dec)):
+            return array, dec
+
 def permutaciones(bit):
     """Create all permutation possible for n bits"""
     
