@@ -108,7 +108,7 @@ if __name__ == "__main__":
             
         if aux == 1:
             n = int(input("\nIntroduce n, no mayor a 1000 ni menor a 0: "))
-            if 100 < n < 0:
+            if 1000 < n < 0:
                 print("Error, el numero introducido no es valido")
                 break
             permutaciones(n)
