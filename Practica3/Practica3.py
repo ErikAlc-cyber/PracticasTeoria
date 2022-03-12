@@ -33,32 +33,24 @@ def repre_adf(pre, simbolo, arch):
     if(pre == "q0"):
         if(simbolo == "1"):
             siguiente = "q2"
-            arch.write("| f(q0, 1) -> q2 |")
         else:
             siguiente = "q1"
-            arch.write("| f(q0, 0) -> q1 |")
     elif(pre == "q1"):
         if(simbolo == "1"):
             siguiente = "q3"
-            arch.write("| f(q1, 1) -> q3 |")
         else:
             siguiente = "q0"
-            arch.write("| f(q1, 0) -> q0 |")
     elif(pre == "q2"):
         if(simbolo == "1"):
             siguiente = "q0"
-            arch.write("| f(q2, 1) -> q0 |")
         else:
             siguiente = "q3"
-            arch.write("| f(q3, 0) -> q3 |")
     elif(pre == "q3"):
         if(simbolo == "1"):
             siguiente = "q1"
-            arch.write("| f(q3, 1) -> q1 |")
         else:
             siguiente = "q2"
-            arch.write("| f(q3, 0) -> q2 |")
-    
+    arch.write("| f("+pre+", "+simbolo+") -> "+siguiente+" |")
     return siguiente
 
 def binario_random(n):
