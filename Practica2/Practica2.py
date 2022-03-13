@@ -32,23 +32,15 @@ def graficar(y_axis, titlex, titley):
         plt.title(titlex + " y "+titley)
         ax.plot(y_axis)
         fin = time.time()
-        plt.show()
         print("El tiempo de ejecucion para la grafica: "+titlex+", "+titley+" es: "+str(fin-inicio))
-        plt.savefig(titlex+titley+".png")
+        plt.savefig("Practica2/"+titlex+titley+".png")
+        plt.show()
         
     except (KeyboardInterrupt, BufferError):
         fin = time.time()
         plt.show()
         print("El tiempo de ejecucion para la grafica: "+titlex+", "+titley+" es: "+str(fin-inicio))
-    
-def convert_tuple(tup):
-    """Convert tuples to strings"""
-        # initialize an empty string
-    stri = ''
-    for item in tup:
-        stri = stri + str(item)
-    return stri
-    
+
 def isPrime(n):
     """Check if number is prime"""
      
@@ -63,69 +55,46 @@ def isPrime(n):
  
     return True
 
-def logic(array):
-        dec = int(array,2)
-        if(isPrime(dec)):
-            return array, dec
-
 def permutaciones(bit):
     """Create all permutation possible for n bits"""
     
-    in_file=open("Practica2/permutaciones.txt", "w")
-    in_file.write("L{e\n")
+    per_file = open("Practica2/permutaciones.txt", "w")
+    per_file.write("L{e\n")
+    dec_file = open("Practica2/decimales.txt", "w")
+    dec_file.write("L{e\n")
+    
+    
     inicio = time.time()
-    i = 0
+    unos = 0
     num_unos = []
     num_digitos = []
     
-    while(i < bit):
-        
-        liminf = 2**i
-        limsup = (2**(i+1))
-        limmed = math.floor(limsup/4)
-        unos = 0
+    while(bit > 1):
         
         try:
-            subsets = list(itertools.islice(itertools.product(*[[0,1]]*(i+1)), liminf, limmed))
-            in_file.write(","+' '.join(map(str, subsets)))
-            unos += sum(map(sum, subsets))
-            #print(subsets)
-            del subsets
-            
-            subsets = list(itertools.islice(itertools.product(*[[0,1]]*(i+1)), limmed, (limmed*2)))
-            in_file.write(' '.join(map(str, subsets)))
-            unos += sum(map(sum, subsets))
-            #print(subsets)
-            del subsets
-            
-            subsets = list(itertools.islice(itertools.product(*[[0,1]]*(i+1)), (limmed*2), (limmed*3)))
-            in_file.write(' '.join(map(str, subsets)))
-            unos += sum(map(sum, subsets))
-            #print(subsets)
-            del subsets
-            
-            subsets = list(itertools.islice(itertools.product(*[[0,1]]*(i+1)), (limmed*3), limsup))
-            in_file.write(' '.join(map(str, subsets))+"\n")
-            unos += sum(map(sum, subsets))
-            #print(subsets)
-            del subsets
-            
-            i += 1
-            num_unos.append(unos)  
-            num_digitos.append(i)     
-            del unos
+            if(isPrime(bit)):
+                binary = bin(bit).replace("0b", "")
+                per_file.write(","+str(binary)+"\n")
+                dec_file.write(","+str(bit)+"\n")
+                unos += sum(int(x) for x in binary if x.isdigit())
+                
+                num_unos.append(unos)  
+                num_digitos.append(len(binary))
+                del binary
+            bit -= 1
             
         except (KeyboardInterrupt,OverflowError):
             break
     
-    in_file.write("}")
-    in_file.close()
-    print(num_unos)
+    per_file.write("}")
+    per_file.close()
+    dec_file.write("}")
+    dec_file.close()
     
     fin = time.time()
     
     print("El tiempo de ejecucion es: "+str(fin-inicio))
-    ingerir(num_unos, num_digitos)
+    ingerir(num_unos, num_digitos[::-1])
         
             
 if __name__ == "__main__":
@@ -144,6 +113,7 @@ if __name__ == "__main__":
                 print("Error, el numero introducido no es valido")
                 break
             permutaciones(n)
+        
         elif aux ==2:
             n = random.randrange(2,2e7)
             permutaciones(n)
