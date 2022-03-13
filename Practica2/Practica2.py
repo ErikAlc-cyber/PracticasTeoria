@@ -1,7 +1,5 @@
 import random
-from cupshelpers import Printer
 import matplotlib.pyplot as plt
-import itertools
 import time
 import math
 
