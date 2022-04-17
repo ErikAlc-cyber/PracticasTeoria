@@ -58,7 +58,7 @@ def DIAGRAMA():
         
 def Escritura(lista):
     diccionario = ["web","website","webpage","webmaster","ebay","site"]
-    Pos = open("Concurrencia.txt", "w+" )
+    Pos = open("Practica4/Concurrencia.txt", "w+" )
     index = 0
     for i in diccionario:
         Pos.write("\n"+i+"'s encontrados: ")
@@ -94,7 +94,7 @@ def DES(direccion, flag):
     
     contador = 0
     estado = 1
-    his = open("Historia.txt", "w")
+    his = open("Practica4/Historia.txt", "w")
     
     for letra in palabras:
         contador = contador + 1
