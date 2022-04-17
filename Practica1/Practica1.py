@@ -39,7 +39,7 @@ def graficar(y_axis, titlex, titley):
     
 def permutaciones(bit):
     
-    in_file=open("Practica1/permutaciones.txt", "w")
+    in_file=open("permutaciones.txt", "w+")
     in_file.write("L{e\n")
     inicio = time.time()
     i = 0
@@ -49,7 +49,7 @@ def permutaciones(bit):
     while(i < bit):
         
         liminf = 2**i
-        limsup = (2**(i+1))
+        limsup = (2**(i+1))qq
         limmed = math.floor(limsup/4)
         unos = 0
         
@@ -88,7 +88,7 @@ def permutaciones(bit):
     
     in_file.write("}")
     in_file.close()
-    print(num_unos)
+    #print(num_unos)
     
     fin = time.time()
     
