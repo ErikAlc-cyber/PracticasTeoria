@@ -4,9 +4,6 @@ from os.path import exists
 import urllib.request
 from inscriptis import get_text
 
-def decision(actual, condicion, paso, transformacion):
-    print("Decisiones")
-
 def Grafo():
     Grafo = graphviz.Digraph('Diccionario')
     Grafo.attr(rankdir='LR')
@@ -58,7 +55,7 @@ def DIAGRAMA():
         
 def Escritura(lista):
     diccionario = ["web","website","webpage","webmaster","ebay","site"]
-    Pos = open("Practica4/Concurrencia.txt", "w+" )
+    Pos = open("Concurrencia.txt", "w+" )
     index = 0
     for i in diccionario:
         Pos.write("\n"+i+"'s encontrados: ")
@@ -94,376 +91,383 @@ def DES(direccion, flag):
     
     contador = 0
     estado = 1
-    his = open("Practica4/Historia.txt", "w")
+    his = open("Historia.txt", "w")
     
     for letra in palabras:
         contador = contador + 1
-        his.write("f( Q"+str(estado)+","+letra.lower()+")-> ")
+        his.write("f( Q"+str(estado)+","+letra+")-> ")
         
         if(estado == 1):
-            if(letra.lower() == "w"):
+            if(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "e"):
+            elif(letra == "e"):
                 estado = 19
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
             else:
                 estado = 1
             continue
         
         if(estado == 2):
-            if(letra.lower() == "w"):
+            if(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "e"):
+            elif(letra == "e"):
                 estado = 3
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
             else:
                 estado = 1
             continue
         
         if(estado == 3):
-            if(letra.lower() == "w"):
+            if(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "e"):
+            elif(letra == "e"):
                 estado = 19
-            elif(letra.lower() == "b"):
+            elif(letra == "b"):
                 web.append(contador-3)
                 estado = 4
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
+            elif(letra == "b"):
+                estado = 20
             else:
                 estado = 1
             continue
         
         if(estado == 4):
-            if(letra.lower() == "w"):
+            if(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "e"):
+            elif(letra == "e"):
                 estado = 19
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 5
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 6
-            elif(letra.lower() == "m"):
+            elif(letra == "m"):
                 estado = 7
-            elif(letra.lower() == "a"):
+            elif(letra == "a"):
                 estado = 21
             else:
                 estado = 1
             continue
         
         if(estado == 5):
-            if(letra.lower() == "a"):
+            if(letra == "a"):
                 estado = 8
-            elif(letra.lower() == "w"):
+            elif(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "e"):
+            elif(letra == "e"):
                 estado = 19
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
             else:
                 estado = 1
             continue
         
         if(estado == 6):
-            if(letra.lower() == "i"):
+            if(letra == "i"):
                 estado = 11
-            elif(letra.lower() == "w"):
+            elif(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "e"):
+            elif(letra == "e"):
                 estado = 19
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
             else:
                 estado = 1
             continue
         
         if(estado == 7):
-            if(letra.lower() == "a"):
+            if(letra == "a"):
                 estado = 14
-            elif(letra.lower() == "w"):
+            elif(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "e"):
+            elif(letra == "e"):
                 estado = 19
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
             else:
                 estado = 1
             continue
         
         if(estado == 8):
-            if(letra.lower() == "g"):
+            if(letra == "g"):
                 estado = 9
-            elif(letra.lower() == "w"):
+            elif(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "e"):
+            elif(letra == "e"):
                 estado = 19
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
             else:
                 estado = 1
             continue
         
         if(estado == 9):
-            if(letra.lower() == "e"):
+            if(letra == "e"):
                 webpage.append(contador-7)
                 estado = 10
-            elif(letra.lower() == "w"):
+            elif(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
             else:
                 estado = 1
             continue
         
         if(estado == 10):
-            if(letra.lower() == "w"):
+            if(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "e"):
+            elif(letra == "e"):
                 estado = 19
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
+            elif(letra == "b"):
+                estado = 20
             else:
                 estado = 1
             continue
         
         if(estado == 11):
-            if(letra.lower() == "t"):
+            if(letra == "t"):
                 estado = 12
-            elif(letra.lower() == "w"):
+            elif(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "e"):
+            elif(letra == "e"):
                 estado = 19
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
             else:
                 estado = 1
             continue
         
         if(estado == 12):
-            if(letra.lower() == "e"):
+            if(letra == "e"):
                 website.append(contador-7)
                 estado = 10
-            elif(letra.lower() == "w"):
+            elif(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
             else:
                 estado = 1
             continue
         
         if(estado == 14):
-            if(letra.lower() == "s"):
+            if(letra == "s"):
                 estado = 15
-            elif(letra.lower() == "w"):
+            elif(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "e"):
+            elif(letra == "e"):
                 estado = 19
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
             else:
                 estado = 1
             continue
         
         if(estado == 15):
-            if(letra.lower() == "t"):
+            if(letra == "t"):
                 estado = 16
-            elif(letra.lower() == "w"):
+            elif(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "e"):
+            elif(letra == "e"):
                 estado = 19
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
             else:
                 estado = 1
             continue
         
         if(estado == 16):
-            if(letra.lower() == "e"):
+            if(letra == "e"):
                 estado = 17
-            elif(letra.lower() == "w"):
+            elif(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
             else:
                 estado = 1
             continue
         
         if(estado == 17):
-            if(letra.lower() == "r"):
+            if(letra == "r"):
                 webmaster.append(contador-9)
-            elif(letra.lower() == "w"):
+                estado = 10
+            elif(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "e"):
+            elif(letra == "e"):
                 estado = 19
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
+            elif(letra == "b"):
+                estado = 20
             else:
                 estado = 1
             continue
         
         if(estado == 19):
-            if(letra.lower() == "b"):
-                estado = 19
-            elif(letra.lower() == "w"):
+            if(letra == "b"):
+                estado = 20
+            elif(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "e"):
+            elif(letra == "e"):
                 estado = 19
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
             else:
                 estado = 1
             continue
         
         if(estado == 20):
-            if(letra.lower() == "a"):
+            if(letra == "a"):
                 estado = 21
-            elif(letra.lower() == "w"):
+            elif(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "e"):
+            elif(letra == "e"):
                 estado = 19
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
             else:
                 estado = 1
             continue
         
         if(estado == 21):
-            if(letra.lower() == "y"):
+            if(letra == "y"):
                 ebay.append(contador-4)
                 estado = 10
-            elif(letra.lower() == "w"):
+            elif(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "e"):
+            elif(letra == "e"):
                 estado = 19
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
             else:
                 estado = 1
             continue
         
         if(estado == 23):
-            if(letra.lower() == "a"):
+            if(letra == "a"):
                 estado = 24
-            elif(letra.lower() == "w"):
+            elif(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "e"):
+            elif(letra == "e"):
                 estado = 19
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
             else:
                 estado = 1
             continue
         
         if(estado == 24):
-            if(letra.lower() == "g"):
+            if(letra == "g"):
                 estado = 25
-            elif(letra.lower() == "w"):
+            elif(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "e"):
+            elif(letra == "e"):
                 estado = 19
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
             else:
                 estado = 1
             continue
         
         if(estado == 25):
-            if(letra.lower() == "e"):
+            if(letra == "e"):
                 page.append(contador-4)
                 estado = 10
-            elif(letra.lower() == "w"):
+            elif(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
             else:
                 estado = 1
             continue
         
         if(estado == 27):
-            if(letra.lower() == "i"):
+            if(letra == "i"):
                 estado = 28
-            elif(letra.lower() == "w"):
+            elif(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "e"):
+            elif(letra == "e"):
                 estado = 19
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
             else:
                 estado = 1
             continue
         
         if(estado == 28):
-            if(letra.lower() == "t"):
+            if(letra == "t"):
                 estado = 29
-            elif(letra.lower() == "w"):
+            elif(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "e"):
+            elif(letra == "e"):
                 estado = 19
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
             else:
                 estado = 1
             continue
         
         if(estado == 29):
-            if(letra.lower() == "e"):
+            if(letra == "e"):
                 site.append(contador-4)
                 estado = 10
-            elif(letra.lower() == "w"):
+            elif(letra == "w"):
                 estado = 2
-            elif(letra.lower() == "p"):
+            elif(letra == "p"):
                 estado = 23
-            elif(letra.lower() == "s"):
+            elif(letra == "s"):
                 estado = 27
             else:
                 estado = 1
-            continue  
+            continue
         
     listas.append(web)
     listas.append(website)
@@ -498,10 +502,9 @@ if __name__ == "__main__":
         DIAGRAMA()
         
       elif(OP == 3):
-          print("Gracias por usarme")
+          print("¡ADIOS!")
           break
 
       else:
-        print("Esa opcion no es valida")
-    
-    exit()
+        print("Esa opcion no es valida, ¡ADIOS!")
+        break
