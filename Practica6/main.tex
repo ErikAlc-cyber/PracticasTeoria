@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage{graphicx,times,amsmath,colortbl, psfrag}
+\usepackage[ruled, vlined, english, boxed, linesnumbered, lined]{algorithm2e}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{algpseudocode} 
+\usepackage{multirow}
+\usepackage {amsfonts}
+\begin{document}
+\begin{titlepage}
+\centering
+
+{\bfseries\LARGE Instituto Polit\'ecnico Nacional \par}
+\vspace{1cm}
+{\scshape\Large Escuela Superiror de Computaci\'on \par}
+\vspace{3cm}
+{\scshape\Huge  PILAS \par}
+\vspace{3cm}
+{\itshape\Large Pr\'actica 6 \par}
+\vfill
+{\Large Alumno: \par}
+{\Large Alcántara Covarrubias Erik \par}
+{\Large Profesor: \par}
+{\Large Juarez Martinez Genaro \par}
+{\Large Grupo: 4CM6\par}
+\vfill
+\end{titlepage}
+
+\section{Introducci\'on}
+Fundamentalmente, el autómata a pila es un autómata finito no determinista con transiciones- $\epsilon$ y una capacidad adicional: una pila en la que se puede almacenar una cadena de “símbolos de pila”. La presencia de una pila significa que, a diferencia del autómata finito, el autómata a pila puede “recordar” una cantidad infinita de información.\newline \newline Sin embargo, a diferencia de las computadoras de propósito general, que también tienen la capacidad de recordar una cantidad arbitrariamente grande de información, el autómata a pila solo puede acceder a la información disponible en su pila de acuerdo con la forma de manipular una pila FIFO (first-in-first-out way, primero en entrar primero en salir).\newline\newline Así, existen lenguajes que podrían ser reconocidos por determinados programas informáticos, pero no por cualquier autómata a pila. De hecho, los autómatas a pila reconocen todos los lenguajes independientes del contexto y solo estos.
+\section{Marco teórico}
+Los autómatas de pila, en forma similar a como se usan los autómatas finitos, también se pueden utilizar para aceptar cadenas de un lenguaje definido sobre un alfabeto $A$. \newline Los autómatas de pila pueden aceptar lenguajes que no pueden aceptar los autómatas finitos. Un autómata de pila cuenta con una cinta de entrada y un mecanismo de control que puede encontrarse en uno de entre un número finito de estados. Uno de estos estados se designa como estado inicial, y además algunos estados se llaman de aceptación o finales.\newline A diferencia de los autómatas finitos, los autómatas de pila cuentan con una memoria auxiliar llamada pila. Los símbolos (llamados símbolos de pila) pueden ser insertados o extraídos de la pila, de acuerdo con el manejo $last-in-first-out (LIFO)$.\newline\newline Las transiciones entre los estados que ejecutan los autómatas de pila dependen de los símbolos de entrada y de los símbolos de la pila. El autómata acepta una cadena x si la secuencia de transiciones, comenzando en estado inicial y con pila vacía, conduce a un estado final, después de leer toda la cadena x.\newline \newline
+La notación formal de un autómata a pila incluye siete componentes. Escribimos la especificación de un autómata a pila P de la forma siguiente:
+\begin{center}
+    $P=(Q,\Sigma,\Gamma,\delta,q_0,Z_0,F)$
+\end{center}
+El significado de cada uno de los componentes es el siguiente:
+\begin{itemize}
+    \item $Q$: Un conjunto finito de estados, como los estados de un autómata finito.
+    \item $\Sigma$: Un conjunto finito de símbolos de entrada, también análogo al componente correspondiente de un autómata finito.
+    \item $\Gamma$: Un alfabeto de pila finito. Este componente, que no tiene análogo en los autómatas finitos, es el conjunto de símbolos que pueden introducirse en la pila.
+    \item $\delta$: La función de transición. Como en el autómata finito, $\delta$ controla el comportamiento del autómata. Formalmente, $\delta$ toma como argumento $\delta(q,a,X)$, donde:
+    \begin{enumerate}
+        \item $q$ es un estado de $Q$.
+        \item $a$ es cualquier símbolo de entrada de $\Sigma$ o $a=\epsilon$, la cadena vacía, que se supone que no es un símbolo de entrada.
+        \item $X$ es un símbolo de la pila, es decir, pertenece a $\Gamma$.
+    \end{enumerate}
+    La salida de $\delta$ es un conjunto finito de pares $(p,\gamma)$, donde $p$ es el nuevo estado y $\gamma$ es la cadena de símbolos de la pila que reemplaza $X$ en la parte superior de la pila.
+    \item $q_0$: El estado inicial. El autómata a pila se encuentra en este estado antes de realizar ninguna transición.
+    \item $Z_0$: El símbolo inicial. Inicialmente, la pila dels autómata a pila consta de una instancia de este símbolo y de nada más.
+    \item $F$: El conjunto de estados de aceptación o estados finales.
+\end{itemize}
+
+\section{Explicaci\'on del problema e implementaci\'on del algoritmo}
+\subsection{Problema a resolver}
+Programar un autómata de pila que sirva para reconocer el lenguaje libre de contexto ${0^n 1^n | n >= 1}$.\newline 
+\newline
+Adicionalmente, el programa debe de contar con las siguientes características:
+\begin{enumerate}
+    \item La cadena puede ser ingresada por el usuario o automáticamente. Si es aleatoriamente, la cadena no podrá ser mayor a 100,000 caracteres.
+    \item Mandar a un archivo y en pantalla la evaluación del autómata a través de descripciones instantáneas (IDs).
+    \item Animar el autómata de pila, solo si la cadena es menor igual a 10 caracteres.
+\end{enumerate}
+
+\subsection{Implementaci\'on}
+
+\subsection{Capturas de Resultados}
+
+\section{Conclusi\'on}
+
+\section{Bibliograf\'ia}
+\begin{itemize}
+    \item Introduction to Automata Theory, Languages, and Computation
+    John E. Hopcroft, Rajeev Motwani, Jeffrey D. Ullman
+    Pearson/Addison Wesley, 2nd edition
+    \item Software Foundation, P. (2022, 13 enero). 3.10.2 Documentation. Documentación de Python. Recuperado 15 de febrero de 2022, de https://docs.python.org/es/3/
+\end{itemize}
+\end{document}
+

@@ -89,5 +89,6 @@
     "typeinfo": "cpp",
     "semaphore": "cpp",
     "__nullptr": "cpp"
-  }
+  },
+  "C_Cpp_Runner.useMsvc": false
 }

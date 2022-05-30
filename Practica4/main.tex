@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage{graphicx,times,amsmath,colortbl, psfrag}
+\usepackage[ruled, vlined, english, boxed, linesnumbered, lined]{algorithm2e}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{algpseudocode} 
+\usepackage{multirow}
+\usepackage {amsfonts}
+\begin{document}
+\begin{titlepage}
+\centering
+
+{\bfseries\LARGE Instituto Polit\'ecnico Nacional \par}
+\vspace{1cm}
+{\scshape\Large Escuela Superiror de Computaci\'on \par}
+\vspace{3cm}
+{\scshape\Huge  Buscador de palabras \par}
+\vspace{3cm}
+{\itshape\Large Pr\'actica 4 \par}
+\vfill
+{\Large Alumno: \par}
+{\Large Alcántara Covarrubias Erik\par}
+{\Large Profesor: \par}
+{\Large Juarez Martinez Genaro \par}
+{\Large Grupo: 4CM6\par}
+\vfill
+\end{titlepage}
+
+\section{Introducci\'on}
+
+Un autómata finito no determinístico es aquel que puede estar en varios estados a la vez, al igual que un autómata finito determinístico tiene un conjunto finito de estados, un conjunto finito de símbolos de entrada, un estado inicial y un conjunto de estados finales. También tiene funciones de transición. \newline \newline
+Un autómata finito no determinístico se representa esencialmente como un autómata finito determinístico:
+\begin{equation}
+A =\{Q,\sum,\delta,q_0,F\}
+\end{equation}
+donde:
+\begin{itemize}
+    \item $Q$ es un conjunto finito de estados.
+    \item $\sum$ es un conjuto finito de símbolos de entrada.
+    \item $q_0$, un elemento de $Q$, es el estado inicial.
+    \item $F$, un subconjunto de $Q$, es el conjunto de estados finales (o de aceptación).
+    \item $\delta$ la función de transición, es una función que toma como argumentos un estado de $Q$ y un símbolo de entra de $\sum$ y devuelve un subconjunto de $Q$. Observe que la única diferencia entre un AFN y un AFD se encuentra en el tipo de calor que devuelve $\delta$: un conjunto de estados en el caso de un AFN y un único estado en el caso de un AFD. 
+\end{itemize}
+
+\section{Marco teórico}
+
+Primero denominaremos palabras clave a las palabras que buscaremos, en este caso es se procede a diseñar un autómata finito no determinista que va a indicar, mediante un estado final, que ha encontrado una de las palabras clave. El texto de un documento se introduce carácter a carácter en este AFN, el cual reconoce a continuación las apariciones de las palabras clave en dicho texto. Existe una forma simple para que un AFN reconozca un conjunto de palabras clave.
+\begin{itemize}
+    \item Hay un estado inicial con una transición a sí mismo para cada uno de los símbolos de entrada, por ejemplo, todos los caracteres ASCII imprimibles si estamos examinando texto. Intuitivamente, el estado inicial representa una “conjetura” de que todavía no hemos detectado una de las palabras clave, incluso aunque hayamos encontrado algunas de las letras de una de esas palabras.
+    \item Para cada palabra clave $a_1a_2...a_k$, existen $k$ estados, por ejemplo, $q_1, q_2, ..., q_k$. Existe una transición desde el estado inicial a q1 para el símbolo $a_1$, una transición desde $q_1$ a $q_2$ para el símbolo $a_2$, etc. El estado $q_k$ es un estado de aceptación e indica que se ha encontrado la palabra clave $a_1a_2...a_k$.
+\end{itemize}
+Ya teniendo el AFN, las reglas para poder construir el AFD desde el AFN son los siguientes:
+\begin{itemize}
+    \item Si $q_0$ es el estado inicial del AFN, entonces \{$q_0$\} es uno de los estados del AFD.
+    \item Suponemos que $p$ es uno de los estados del AFN y se llega a él desde el estado inicial siguiendo un camino cuyos símbolos son $a_1a_2...a_m$. Luego uno de los estados del AFD es el conjunto de estados del AFN constituidos por:
+    \begin{itemize}
+        \item $q0$.
+        \item $p$.
+        \item Cualquier otro estado del AFN al que se pueda llegar desde $q_0$ siguiendo un camino cuyas etiquetas sean un sufijo de $a_1a_2...a_m$ es decir, cualquier secuencia de símbolos de la forma $a_ja_{j+1}...a_m$.
+    \end{itemize}
+\end{itemize}
+
+\section{Explicaci\'on del problema e implementaci\'on del algoritmo}
+
+\subsection{Problema a resolver}
+
+Programar el autómata finito determinístico que reconozca las palabras: web, webpage, website, webmaster, ebay, page, site
+\begin{enumerate}
+    \item Diseñar el NFA.
+    \item Realizar la conversión a DFA mostrando todo el proceso a través de los subconjuntos y tablas.
+    \item El programa deberá de leer un archivo de texto, podría ser de una página web.
+    \item El autómata deberá de identificar cada palabra reservada con el DFA, contarlas e indicar dónde las encontró.
+    \item  En un archivo imprimir la evaluación del autómata por cada carácter que lea y cambio de estado, es decir, toda la historia del proceso.
+    \item En otro archivo enumerar, contar y anotar donde están las palabras encontradas.
+    \item Tener una opción para ver el autómata, es decir, hay que graficarlo.
+\end{enumerate}
+
+\subsection{Implementaci\'on}
+
+
+\section{Pruebas de escritorio y sus grafos}
+
+
+\section{Conclusi\'on}
+
+
+\section{Bibliograf\'ia}
+\begin{itemize}
+    \item Introduction to Automata Theory, Languages, and Computation
+John E. Hopcroft, Rajeev Motwani, Jeffrey D. Ullman
+Pearson/Addison Wesley, 2nd edition
+    \item Software Foundation, P. (2022, 13 enero). 3.10.2 Documentation. Documentación de Python. Recuperado 15 de febrero de 2022, de https://docs.python.org/es/3/
+\end{itemize}
+\end{document}

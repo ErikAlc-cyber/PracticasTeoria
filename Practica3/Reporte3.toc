@@ -1,8 +1,0 @@
-\contentsline {section}{\numberline {1}Introducción}{2}{}%
-\contentsline {section}{\numberline {2}Marco Teorico}{2}{}%
-\contentsline {section}{\numberline {3}Desarrollo}{2}{}%
-\contentsline {subsection}{\numberline {3.1}Programa 3 - Protocolo}{3}{}%
-\contentsline {subsection}{\numberline {3.2}Codigo}{3}{}%
-\contentsline {section}{\numberline {4}Resultados}{7}{}%
-\contentsline {section}{\numberline {5}Conclusión}{7}{}%
-\contentsline {section}{\numberline {6}Referencias bibliograficas}{8}{}%

@@ -1,6 +1,6 @@
 import random
 import time
-import graphviz 
+#import graphviz 
 import tempfile
 
 def grafica():
@@ -107,9 +107,9 @@ def new_gen():
   num = []
   inicio = time.time()  
   
-  for i in range(10**6): #(10**6)
+  for i in range(20): #(10**6)
     try:
-      task = binario_random(64) #64
+      task = binario_random(10) #64
       num.append(task)
       del task
           
@@ -133,7 +133,7 @@ def protocolo():
   repeticiones = 0
   while(bool(random.getrandbits(1))):
     estado = bool(random.getrandbits(1))
-    filelog = open("Practica3/Automata.txt", "w")
+    filelog = open("Automata.txt", "w")
     filelog.close()
       
     if(estado):

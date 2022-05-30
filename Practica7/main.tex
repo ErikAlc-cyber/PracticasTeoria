@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage{graphicx,times,amsmath,colortbl, psfrag}
+\usepackage[ruled, vlined, english, boxed, linesnumbered, lined]{algorithm2e}
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{algpseudocode} 
+\usepackage{multirow}
+\usepackage {amsfonts}
+\begin{document}
+\begin{titlepage}
+\centering
+
+{\bfseries\LARGE Instituto Polit\'ecnico Nacional \par}
+\vspace{1cm}
+{\scshape\Large Escuela Superiror de Computaci\'on \par}
+\vspace{3cm}
+{\scshape\Huge  Maquina de Turing \par}
+\vspace{3cm}
+{\itshape\Large Pr\'actica 7 \par}
+\vfill
+{\Large Alumno: \par}
+{\Large Alcántara Covarrubias Erik \par}
+{\Large Profesor: \par}
+{\Large Juarez Martinez Genaro \par}
+{\Large Grupo: 4CM6\par}
+\vfill
+\end{titlepage}
+\section{Introducci\'on}
+En términos generales podemos decir que una máquina de Turing es un dispositivo capaz de procesar cualquier clase de datos, codificados mediante palabras o cadenas formadas por símbolos dados. Esta máquina abstracta consta de una cinta infinita hacia ambos lados que está divida en casillas o celdas, las cuales contienen a lo más un símbolo; también tiene una cabeza de lectura y escritura que se mueve a lo largo de la cinta. Su funcionamiento es secuencial y está dado por la llamada función de transición que se representa mediante una tabla finita de reglas, llamadas de ejecución o transición, que describen la acción que debe ejecutarse considerando el estado actual y el símbolo escrito en la celda donde se encuentra la cabeza, con lo cual se determinan el nuevo estado, el símbolo que se debe escribir y el desplazamiento de la cabeza hacia alguna de las celdas vecinas. \newline Al principio, la máquina se encuentra en un estado inicial fijo, la cadena o dato de entrada se asume escrito en algún lugar de la cinta y la cabeza se encuentra una celda a la izquierda del primer símbolo de este. Cabe resaltar que en todas las celdas de la cinta, excepto aquellas que contienen la cadena, se encuentra escrito el símbolo especial llamado blanco, por lo tanto, al inicio de la ejecución la cabeza estará leyendo un blanco. \newline La ejecución es dirigida por la función de transición y termina cuando no se ha definido ninguna regla para el estado y símbolo actual, es decir cuando no es posible ejecutar una acción más. Decimos que una cadena es aceptada por la máquina cuando la ejecución de esta termina y se encuentra en el estado distinguido como final. Adicionalmente la cadena final escrita sobre la máquina puede considerarse como la respuesta o dato de salida del proceso.
+\section{Marco teórico}
+La máquina consta de una unidad de control, que puede encontrarse en cualquiera de un conjunto finito de estados. Hay una cinta dividida en cuadrados o casillas y cada casilla puede contener un símbolo de entre un número finito de símbolos.\newline
+La notación formal que vamos a emplear para una máquina de Turing es similar a la que heos empleado para los autómatas finitos o los autómatas a pila. Describimos una máquina de Turing mediante la siguiente séptula:
+\begin{center}
+    $M=(Q,\Sigma,\Gamma,\delta,q_0,B,F)$
+\end{center}
+cuyos componentes tieen el siguiente sigificado:
+\begin{itemize}
+    \item $Q$: El cojunto finito de estados de la unidad de control.
+    \item $\Sigma$: El conjunto finito de símbolos de entrada.
+    \item $\Gamma$: El conjunto completo de símbolo de cinta: $\Sigma$ siempre es un subconjunto de $\Gamma$.
+    \item $\delta$: La función de transición. Los argumentos de $\delta(q,X)$ son un estado de $q$ y un símbolo de cinta $X$. El valor de $\delta(q,X)$, si está definido, es $(p,Y,D)$, donde:
+    \begin{enumerate}
+        \item $p$ es el siguiente estado de $Q$.
+        \item $Y$ es el símbolo de $\Gamma$, que se escribe en la casilla que señala la cabeza y que sustituye a cualquier símbolo que se encontrara en ella. 
+        \item $D$ es una dirección y puede ser $L$ o $R$, lo que nos indica la dirección en que la cabeza se mueve, "izquierda" (L) o "derecha" (R) , respectivamente. 
+    \end{enumerate}
+    \item $q_0$: El estado inicial, un elemento de $Q$, en el que inicialmente se encuentra la unidad de control.
+    \item $B$: EL símbolo espacio en blanco. Este símbolo pertenece a $\Gamma$ pero no a $\Sigma$; es decir, no es un símbolo de entreda. El espacio en blanco aparece inicialmente en todas las casillas excepto en aquéllas que se almacenan los símbolos de la entrada.
+    \item $F$: El conjunto de estados finales o de aceptación, un subconjunto de $Q$.
+\end{itemize}
+\section{Explicaci\'on del problema e implementaci\'on del algoritmo}
+\subsection{Problema a resolver}
+Se programará la máquina del artículo titulado "What can we learn from universal Turing machines?".
+\begin{enumerate}
+    \item La máquina se tiene que animar para cadenas pequeñas (menor igual a 10 caracteres).
+    \item Puede recibir la cadena por parte del usuario o aleatoriamente con un máximo de 50 caracteres.
+    \item Mandar la salida a u archivo de texto que muestre las descripciones instantáneas (IDs) por renglón en cada iteración.
+\end{enumerate}
+\subsection{Implementaci\'on}
+\subsection{Capturas de Resultados}
+\section{Conclusi\'on}
+\section{Bibliograf\'ia}
+\begin{itemize}
+    \item Introduction to Automata Theory, Languages, and Computation
+    John E. Hopcroft, Rajeev Motwani, Jeffrey D. Ullman
+    Pearson/Addison Wesley, 2nd edition
+    \item Software Foundation, P. (2022, 13 enero). 3.10.2 Documentation. Documentación de Python. Recuperado 15 de febrero de 2022, de https://docs.python.org/es/3/
+\end{itemize}
+\end{document}

@@ -49,7 +49,7 @@ def permutaciones(bit):
     while(i < bit):
         
         liminf = 2**i
-        limsup = (2**(i+1))qq
+        limsup = (2**(i+1))
         limmed = math.floor(limsup/4)
         unos = 0
         
