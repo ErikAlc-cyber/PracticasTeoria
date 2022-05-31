@@ -2,56 +2,10 @@ import random
 import os
 from time import sleep
 
-def MANUAL():
-    cad = []
-    n = int( input("Cual es el valor de n:"))
-    m = int(input("Cual es el valor de m:"))
-    aux = []
-    aux_2 = []
-    for i in range (n):
-        aux.append('|')
-    for i in range (m):
-        aux_2.append('|')
-    
-    cad = list('*'+ ''.join(aux) + '*' + ''.join(aux_2) + '*')
-    print("Cadena original: "+ ''.join(cad))
-    sleep(2)
-    largo = len(cad)
-    if largo <= 10:
-        animacion = True
-    else:
-        print("No se puede realizar la animacion\n")
-        animacion = False
-    
-    Maquina(cad, animacion)
-    
-def AUTOMATICO():
-    n_1 = random.randint(1, 50)
-    m_1 = random.randint(1, 50)
-    cad = []
-    aux = []
-    aux_2 = []
-    for i in range (n_1):
-        aux.append('|')
-    for i in range (m_1):
-        aux_2.append('|')
-    
-    cad = list('*'+ ''.join(aux) + '*' + ''.join(aux_2) + '*')
-    print("Cadena original: "+ ''.join(cad))
-    largo = len(cad)
-    if largo <= 10:
-        animacion = True
-    else:
-        print("No se puede realizar la animacion\n")
-        animacion = False
-    
-    Maquina(cad, animacion)
-    
-
 def Maquina (cad, anim):
     estado=1
     j=0
-    archivo = open("MT.txt", "w+")
+    archivo = open("Practica7/MT.txt", "w+")
     while(True):
         try:
             archivo.write(''.join(cad) + " " + str(estado))
@@ -165,11 +119,11 @@ def Maquina (cad, anim):
         
         except IndexError:
             break
+        
     print("La cadena final es: "+''.join(cad))
     
 def animacion(cadena, posicion):
     animac = []
-    
     if os.name =="nt": 
         os.system("cls") 
     else: 
@@ -189,15 +143,37 @@ if __name__ == "__main__":
         print("1.-Manual")
         print("2.-Automatico")
         print("3.-Salir")
-        OP = int(input("Elija una opcion: "))
-            
-        if OP == 1:
-            MANUAL()
-        elif OP ==2:
-            AUTOMATICO()   
-        elif OP ==3:
+        OP = int(input("Elija una opcion: "))    
+        if OP==1:
+            n = int( input("Cual es el valor de n: "))
+            m = int(input("Cual es el valor de m: "))
+        
+        elif OP==2:
+            n = random.randint(1, 50)
+            m = random.randint(1, 50)   
+        
+        elif OP==3:
             print("Adios!!\n")
-            break
+            exit()
+        
         else:
             print("No existe esa opcion\n")
             break
+        
+        cad = []
+        aux = []
+        aux_2 = []
+        for i in range (n):
+            aux.append('|')
+        for i in range (m):
+            aux_2.append('|')
+             
+        cad = list('*'+ ''.join(aux) + '*' + ''.join(aux_2) + '*')
+        print("Cadena original: "+ ''.join(cad))
+        largo = len(cad)
+        if largo <= 10:
+            animaniac = True
+        else:
+            print("No se puede realizar la animacion\n")
+            animaniac = False
+        Maquina(cad, animaniac)
