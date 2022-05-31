@@ -5,6 +5,9 @@ import urllib.request
 from inscriptis import get_text
 
 def Grafo():
+    """
+    It creates a graphviz graph with the nodes and edges that correspond to the words in the dictionary
+    """
     Grafo = graphviz.Digraph('Diccionario')
     Grafo.attr(rankdir='LR')
     Grafo.attr('node', shape='circle')
@@ -48,12 +51,21 @@ def Grafo():
     Grafo.view(tempfile.mktemp())
 
 def DIAGRAMA():
+    """
+    It creates a graph, and if it fails, it prints "Error"
+    """
     try:
         Grafo()
     except Exception:
         print("Error")
         
 def Escritura(lista):
+    """
+    It takes a list of lists of integers, and writes a file with the number of integers in each list,
+    and the integers themselves.
+    
+    :param lista: a list of lists, where each list contains the positions of the words in the text
+    """
     diccionario = ["web","website","webpage","webmaster","ebay","site"]
     Pos = open("Concurrencia.txt", "w+" )
     index = 0
@@ -66,6 +78,13 @@ def Escritura(lista):
     Pos.close()
 
 def DES(direccion, flag):
+    """
+    It takes a string and returns a list of lists of integers
+    
+    :param direccion: The address of the file or the URL
+    :param flag: 1 for reading from a file, 2 for reading from a URL
+    :return: a list of lists.
+    """
 
     if (flag == 1):
         archivo = open(direccion, 'r')

@@ -3,6 +3,12 @@ import os
 from time import sleep
 
 def Maquina (cad, anim):
+    """
+    It takes a string and a boolean as input, and returns a string
+    
+    :param cad: The string to be processed
+    :param anim: True or False, if you want to see the animation or not
+    """
     estado=1
     j=0
     archivo = open("Practica7/MT.txt", "w+")
@@ -123,6 +129,12 @@ def Maquina (cad, anim):
     print("La cadena final es: "+''.join(cad))
     
 def animacion(cadena, posicion):
+    """
+    It prints the string, then prints a caret at the position specified.
+    
+    :param cadena: The string to be animated
+    :param posicion: The position of the caret
+    """
     animac = []
     if os.name =="nt": 
         os.system("cls") 

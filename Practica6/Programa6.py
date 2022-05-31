@@ -1,18 +1,29 @@
 import random
 import time
+import os
+from time import sleep
 
+# It's a stack
 class Pila(object):
     def __init__(self):
         self.largo = -1
         self.espacios = []
 
     def final(self):
+        """
+        If the length of the list is -1, then the list is empty
+        :return: The final method returns a boolean value.
+        """
         if self.largo == -1:
             return True
         else:
             return False
 
     def extraer(self):
+        """
+        It returns the last element of the list, and then removes it from the list
+        :return: The value of the last element in the list.
+        """
         if self.final():
             return 'e'
         else:
@@ -21,10 +32,20 @@ class Pila(object):
             return valor
 
     def insertar(self, elemento):
+        """
+        It inserts an element into the array.
+        
+        :param elemento: The element to be inserted
+        """
         self.largo += 1
         self.espacios[self.largo:] = [elemento]
 
     def revelar(self):
+        """
+        It takes the length of the string, and then iterates through the string, adding each character to
+        a new string, and then returns the new string
+        :return: The string of the spaces in the list.
+        """
         i = self.largo
         cadena = ''
         while(i>-1):
@@ -32,39 +53,17 @@ class Pila(object):
             i -= 1
         return cadena
 
-def MANUAL():    
-    cadena = input("Escribe el numero binario: ")
-    largo = len(cadena)
-    if largo <= 10:
-        animacion = True
-    else:
-        print("No se puede realizar la animacion\n")
-        animacion = False
-        
-    DES(cadena, animacion)    
-    
-def AUTOMATICO():
-    i = 0
-    LONGITUD = random.randint(1, 100000)
-    cadbin = ''
-    while i < LONGITUD:
-        cadbin += random.choice(['0', '1'])
-        i += 1
-
-    print("El numero aleatorio es: ", cadbin)
-    largo = len(cadbin)
-    if largo <= 10:
-        animacion = True
-    else:
-        print("No se puede realizar la animacion\n")
-        animacion = False
-        
-    DES(cadbin, animacion)
-    
-
 def DES(cadena, decision):
+    """
+    It takes a string and a boolean as arguments, and if the boolean is true, it will print the string
+    in a way that makes it look like a stack is being used to process the string
+    
+    :param cadena: The string to be tested
+    :param decision: True or False, if True, the program will show the animation, if False, it will show
+    the steps of the program
+    """
     pila = Pila()
-    archivo = open('HISPILA.txt', 'w')
+    archivo = open('Practica6/HISPILA.txt', 'w')
     pila.insertar('Zo')
     estado = 'q'
     auxiliar = cadena
@@ -125,28 +124,26 @@ def DES(cadena, decision):
     archivo.close()
 
 def ANIMACION(estado, cadena_aux, stack):
+    """
+    It clears the screen, prints the current state, the current string, and the current stack, and then
+    waits for 0.9 seconds
+    
+    :param estado: The current state of the automaton
+    :param cadena_aux: The string that is being processed
+    :param stack: is the stack that is used in the program
+    """
     
     pila = 'Zo'    
     if stack.revelar() != '':
         pila = stack.revelar()
-    
+    if os.name =="nt": 
+        os.system("cls") 
+    else: 
+        os.system("clear")
+        
     print("\n")
-    print('     %s' %cadena_aux)
-    print('     ^')
-    print('     |')
-    print('     |')
-    print('     |')
-    print('-----------')
-    print('|         |')
-    print('|    %s    |' %estado)
-    print('|         |')
-    print('-----------')
-    print('     |')
-    print('     |')
-    print('     |')
-    print('     v')
-    print('     %s' %pila)
-    print("\n")
+    print(cadena_aux + " -> " +estado+" -> " + pila)
+    sleep(0.9)
 
 if __name__ == "__main__":
     
@@ -159,12 +156,27 @@ if __name__ == "__main__":
         OP = int(input("Elija una opcion: "))
             
         if OP == 1:
-            MANUAL()
+            cadena = input("Escribe el numero binario: ")
         elif OP ==2:
-            AUTOMATICO()   
+            i = 0
+            LONGITUD = random.randint(1, 100000)
+            cadena = ''
+            while i < LONGITUD:
+                cadena += random.choice(['0', '1'])
+                i += 1   
         elif OP ==3:
             print("Adios!!\n")
-            break
+            exit()
         else:
             print("No existe esa opcion\n")
             break
+        
+        print("El numero es: ", cadena)
+        largo = len(cadena)
+        if largo <= 10:
+            animacion = True
+        else:
+            print("No se puede realizar la animacion\n")
+            animacion = False
+            
+        DES(cadena, animacion)
