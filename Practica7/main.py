@@ -1,24 +1,25 @@
 def MANUAL():
     fin = 0
     estado = 1
-    i=0
     j=0
-    res= ''
     cad = []
     n = int( input("Cual es el valor de n:"))
     m = int(input("Cual es el valor de m:"))
-    aux = ''
-    aux_2 = ''
+    aux = []
+    aux_2 = []
     for i in range (n):
-        aux += '|'
+        aux.append('|')
     for i in range (m):
-        aux_2 += '|'
+        aux_2.append('|')
     
-    cad = list('*'+ aux + '*' + aux_2 + '*')
+    archivo = open("archivo.txt", "w+")
+    cad = list('*'+ ''.join(aux) + '*' + ''.join(aux_2) + '*')
     print("Cadena original: "+ ''.join(cad))
     
     while(fin != 1):
         try:
+            archivo.write(''.join(cad) + " " + str(estado))
+            archivo.write("\n")
             if (estado == 1):
                 if(cad[j] == '*'):
                     cad[j] = 'X'
@@ -131,6 +132,7 @@ def MANUAL():
                 elif(cad[j]=='X'):
                     cad[j]='*'
                     estado=9
+                    archivo.write(''.join(cad))
                     fin = 1
                 else:
                     print("Error 9")

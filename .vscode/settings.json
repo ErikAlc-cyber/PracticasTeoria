@@ -90,5 +90,10 @@
     "semaphore": "cpp",
     "__nullptr": "cpp"
   },
-  "C_Cpp_Runner.useMsvc": false
+  "C_Cpp_Runner.useMsvc": false,
+  "python.testing.pytestArgs": [
+    "Practica5"
+  ],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true
 }
