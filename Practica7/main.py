@@ -1,23 +1,8 @@
+import random
 import os
 from time import sleep
-def animacion(cadena, posicion):
-    animac = []
-    
-    if os.name =="nt": 
-        os.system("cls") 
-    else: 
-        os.system("clear") 
-    print(cadena)
-    for i in range(posicion-1):
-        animac.append(" ")
-    animac.append("^")
-    print(''.join(animac))
-    sleep(0.09)
-    
+
 def MANUAL():
-    fin = 0
-    estado = 1
-    j=0
     cad = []
     n = int( input("Cual es el valor de n:"))
     m = int(input("Cual es el valor de m:"))
@@ -28,23 +13,56 @@ def MANUAL():
     for i in range (m):
         aux_2.append('|')
     
-    archivo = open("archivo.txt", "w+")
     cad = list('*'+ ''.join(aux) + '*' + ''.join(aux_2) + '*')
     print("Cadena original: "+ ''.join(cad))
-    sleep(5)
+    sleep(2)
+    largo = len(cad)
+    if largo <= 10:
+        animacion = True
+    else:
+        print("No se puede realizar la animacion\n")
+        animacion = False
     
-    while(fin != 1):
+    Maquina(cad, animacion)
+    
+def AUTOMATICO():
+    n_1 = random.randint(1, 50)
+    m_1 = random.randint(1, 50)
+    cad = []
+    aux = []
+    aux_2 = []
+    for i in range (n_1):
+        aux.append('|')
+    for i in range (m_1):
+        aux_2.append('|')
+    
+    cad = list('*'+ ''.join(aux) + '*' + ''.join(aux_2) + '*')
+    print("Cadena original: "+ ''.join(cad))
+    largo = len(cad)
+    if largo <= 10:
+        animacion = True
+    else:
+        print("No se puede realizar la animacion\n")
+        animacion = False
+    
+    Maquina(cad, animacion)
+    
+
+def Maquina (cad, anim):
+    estado=1
+    j=0
+    archivo = open("MT.txt", "w+")
+    while(True):
         try:
-            animacion(''.join(cad), j)
             archivo.write(''.join(cad) + " " + str(estado))
             archivo.write("\n")
+            if(anim):
+                animacion(''.join(cad), j)
             if (estado == 1):
                 if(cad[j] == '*'):
                     cad[j] = 'X'
                     j+=1
                     estado = 2
-                else:
-                    print("Primer error")
                 continue
             elif (estado == 2):
                 if(cad[j]=='*'):
@@ -53,8 +71,6 @@ def MANUAL():
                 elif(cad[j]=='|'):
                     j+=1
                     estado =2
-                else:
-                    print("Error 2")
                 continue
             elif estado == 3:
                 if(cad[j]=='*'):
@@ -64,8 +80,6 @@ def MANUAL():
                 elif(cad[j]=='|'):
                     j+=1
                     estado= 3
-                else:
-                    print("Error 3")
                 continue
             elif estado == 4:
                 if(cad[j]=='*'):
@@ -78,8 +92,6 @@ def MANUAL():
                 elif(cad[j]=='X'):
                     j+=1
                     estado=7
-                else:
-                    print("Error 4")
                 continue
             elif estado == 5:
                 if(j == (len(cad)-1)):
@@ -95,8 +107,6 @@ def MANUAL():
                 elif(cad[j]=='X'):
                     j+=1
                     estado = 5
-                else:
-                    print("Error 5")
                 continue
             elif estado == 6:
                 if(cad[j]=='*'):
@@ -112,8 +122,6 @@ def MANUAL():
                 elif(cad[j]=='X'):
                     j-=1
                     estado=6
-                else:
-                    print("Error 6")
                 continue
             elif estado == 7:
                 if(cad[j]=='*'):
@@ -122,8 +130,6 @@ def MANUAL():
                 elif(cad[j]=='|'):
                     j+=1
                     estado=7
-                else:
-                    print("Error 7")
                 continue
             elif estado == 8:
                 if(j == (len(cad)-1)):
@@ -137,8 +143,6 @@ def MANUAL():
                     cad[j]='*'
                     j+=1
                     estado=8
-                else:
-                    print("Error 8")
                 continue
             elif estado == 9:
                 if(cad[j]=='*'):
@@ -151,25 +155,31 @@ def MANUAL():
                     cad[j]='*'
                     estado=9
                     archivo.write(''.join(cad))
-                    fin = 1
-                else:
-                    print("Error 9")
+                    if(anim):
+                        animacion(''.join(cad), j)
+                    break
                 continue
             else:
-                print("NO SE SABE QUE ONDA") 
+                print("Error") 
                 break  
         
         except IndexError:
             break
     print("La cadena final es: "+''.join(cad))
-       
-def AUTOMATICO():
-    cad = ['|']
-    print("La primera forma",cad)
-    cad.remove(1)
-    cad.insert(0,'Hola')
-    print("La segunda forma:",cad)
-        
+    
+def animacion(cadena, posicion):
+    animac = []
+    
+    if os.name =="nt": 
+        os.system("cls") 
+    else: 
+        os.system("clear") 
+    print(cadena)
+    for i in range(posicion-1):
+        animac.append(" ")
+    animac.append("^")
+    print(''.join(animac))
+    sleep(0.09)        
     
 if __name__ == "__main__":
     
