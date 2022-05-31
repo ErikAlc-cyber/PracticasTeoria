@@ -2,12 +2,18 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Python: Archivo actual",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
-      "args": [
-        ""
-      ],
+      "args": [""],
       "stopAtEntry": false,
       "cwd": "/home/valhirex/Desktop/PracticasTeoria/Companero",
       "environment": [],

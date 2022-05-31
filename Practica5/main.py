@@ -37,7 +37,7 @@ tabla_estados = {
         'h' : {'W': 'gdl', 'R': 'ck'},
         'i' : {'W': 'ejm', 'R': 'gn'},
         'j' : {'W': 'egmo', 'R': 'fikn'},
-        'k' : {'W': 'jglm', 'R': 'fhnp'},
+        'k' : {'W': 'jglo', 'R': 'fhnp'},
         'l' : {'W': 'go', 'R': 'hkp'},
         'm' : {'W': 'j', 'R': 'in'},
         'n' : {'W': 'mjo', 'R': 'ik'},
@@ -51,7 +51,7 @@ def recalculate(route_1:list, route_2:list, num_try:int, starter:int):
     will be recalculated, if there is again another coincidence the route will stop.
     
     :param route_1: the first route
-    :param route_2: the route that is being compablack to route_1
+    :param route_2: the route that is being compared to route_1
     :param num_try: This is the number of times the algorithm has tried to find a solution
     :param starter: Who start the game
     :return: a boolean value, and the two routes.
@@ -61,11 +61,9 @@ def recalculate(route_1:list, route_2:list, num_try:int, starter:int):
             if(route_1[i]==route_2[i]):
                 if(num_try == 2):
                     if (starter == 1):
-                        route_1.insert(i,route_1[i-1])
-                        route_1.insert(i,route_1[i-2])
-                    else:
                         route_2.insert(i,route_2[i-1])
-                        route_2.insert(i,route_2[i-2])
+                    else:
+                        route_1.insert(i,route_1[i-1])
                     return False, route_1, route_2
                 else:
                     return True, route_1, route_2
@@ -230,10 +228,12 @@ if __name__ == "__main__":
                             accept, final_r1, final_r2 = recalculate(list(routes_1[1]), list(routes_2[0]), 2, inicio)
                     r1 = ''.join(final_r1)
                     r2 = ''.join(final_r2)
+                    print(r1)
+                    print(r2)
                     
                 else:
                     r1 = routes_1[0]
-                #Simul all this shit
+                    print(r1)
                 pygame.display.init()
                 
                 #color in rgb values
@@ -256,9 +256,9 @@ if __name__ == "__main__":
                     for z in range(1,boardLength+1):
                     #check if current loop value is even
                         if cnt % 2 == 0:
-                            pygame.draw.rect(gameDisplay, white,[size*z,size*i,size,size])
+                            pygame.draw.rect(gameDisplay, black,[size*z,size*i,size,size])
                         else:
-                            pygame.draw.rect(gameDisplay, black, [size*z,size*i,size,size])
+                            pygame.draw.rect(gameDisplay, white, [size*z,size*i,size,size])
                         cnt +=1
                         #since theres an even number of squares go back one value
                     cnt-=1
@@ -271,6 +271,7 @@ if __name__ == "__main__":
                 if (num_jugadores >= 2):
                     gameDisplay.blit(w_player,[4*size, size])
                     w_piece.decoder(r2, size)
+                    
                 
                 #print the pieces
                 pygame.display.update()

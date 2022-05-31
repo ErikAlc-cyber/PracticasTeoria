@@ -1,0 +1,143 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{graphicx}
+\graphicspath{ {/} }
+\begin{document}
+\begin{titlepage}
+\centering
+
+{\bfseries\LARGE Instituto Polit\'ecnico Nacional \par}
+{\scshape\Large Escuela Superiror de Computaci\'on \par}
+{\scshape\Large Matematicas Avanzadas para la Ingenieria \par}
+\vfill
+{\Large Profesor: \par}
+{\Large Miguel Gonzales Trujillo\par}
+{\Large Alumno: \par}
+{\Large Alcantara Covarrubias Erik \par}
+{\Large Email: erik.alcova@gmail.com \par}
+{\Large Grupo: 4SCM6\par}
+\vfill
+\end{titlepage}
+\tableofcontents
+\newpage
+\section*{Primer Parcial}
+\section*{Segundo Parcial}
+\subsection*{Integracion Compleja}
+Segun el teorema fundamental del calculo, existe una funcion F = f(x):
+\\a) Tal que la integral de A a B de f(x) dx es: F(B) - F(A)
+\\b) La derivada de una funcion antiderivada es igual a la funcion original
+\\Ahora sea f(z) una funcion compleja definida en todo z que es real. 
+\\f(z) solo podra ser integrada con $\int_\gamma f(z) dz$ donde; $\gamma$ = trayectoria o camino.
+\\A esto se le llamara integral de curva o linea.
+
+\subsubsection*{Parametrizacion}
+Por ejemplo si tenemos una curva $\gamma$ nosotros podemos parametrizarla o describirla con una ecuacion compleja:
+\\Digamos que $\gamma_1$ = 1+i y $\gamma_0$ = 0+i0, z lo podemos expresar en su forma x+iy;
+\\Si calculamos su formula como si fuera una recta en el plano cartesiano (y = mx+b) entonces;
+\\En este caso m = 1 y b = 0, podemos calcular que $x = t \epsilon [0,1]$ y $y = x = t \epsilon [0,1] $
+\\Por lo tanto ambas partes dependen de $t$, si reemplazamos en la ecuacion original, obtenemos $z(t) = t+it$ donde $t \epsilon [0,1]$ 
+\\Teniendo la ecuacion parametrizada podemos porfin definir una integral para numeros complejos:
+\\$\int_{z(t_0)}^{z(t_1)} f(t) \frac{dz}{dt} dt$ donde $f(t)$ es una funcion compleja $f(z) = u(t) + iv(t)$.
+\\Podemos identificar la nueva ecuacion como $\int_\gamma f(z) = \int_\gamma (u(t) + v(i))dz = \int_\gamma u(t)dz + i\int_\gamma v(t)dz$
+
+\subsubsection*{Tipos de curva}
+Teniendo diferentes curvas de tipo;
+\\a) Curva simple abierta (Normales)
+\\b) Curva simple cerrada (circulares)
+\\c) Curva no simple cerrada (circulares con irregularidades)
+\\d) Curva simple por partes [Spp] (Normales compuestas)
+
+\subsubsection*{Definicion}
+Sea $\gamma$ una curva definida por;
+\\$z = z(t)$ donde $t \epsilon I$
+\\$\gamma$ es una curva simple si dados $t_1$ y $t_2 \epsilon I$ tales que $t_1 \neq t_2$ y $z(t_1) \neq z(t_2)$
+\\$\gamma$ es una curva cerrada si $z(t_0) = z(t_f)$, $t_1 \neq t_2$ y $z(t_1) \neq z(t_2)$
+\\$\gamma$ es una curva no simple cerrada si $z(t_0) = z(t_f)$, $t_1 \neq t_2$ y $z(t_1) = z(t_2)$
+\\$\gamma$ es una curva simple por partes si cada parte es una curva simple
+\\Estas definicioes sirven para resolver f(z): $\int_\gamma f(z)dz$ = $\int_a^b f[z(t)]\frac{dz}{dt}dt$
+
+\subsubsection*{Ejercicio 1}
+Parametrice los sig. Arcos o curvas; En un punto de 1 a i
+\\Esta recta se puede definir como $\gamma = \gamma_1 \cup \gamma_2$
+\\$\gamma_1 = Z_1(t) = 1 + ti$ $\forall$ $t\epsilon[0,1]$
+\\$\gamma_2 = Z_2(t) = (2-t) + i$ $\forall$ $t\epsilon[1,2]$
+\\*Nota: $\gamma_2$ puede escribirse diferente, pero surgen problemas al duplicarse y usar el mismo intervalo, por lo que la formula propuesta soluciona estos problemas
+\\Definimos $\frac{dz}{dt}$ = $i \forall t \epsilon [0,1]$ o $(-1) \forall t \epsilon [1,2]$
+\\Para f(z) = 1 $=>$\\ $\int_\gamma f(z) dz = \int_{\gamma_1}1dz + \int_{\gamma_2}1dz = \int_0^11(i)dt + \int_1^21 (-1)dt = i-1$
+
+\subsubsection*{Ejercicio 2}
+Siendo f(z) = $z^2$ y $\rho$ = 2
+\\La formula del circulo es: $x^2 + y^2 = r^2$ $=>$ $x^2 + y^2 = 2^2$
+\\Por definicion en coordenadas polares: $x = \rho Sen(t)$ y $y = \rho Cos(t)$
+\\Sustituyendo $z(t)=[2Sen(t)]^2 + i[2Cos(t)]^2 = 2^2$ $\forall$ $t\epsilon[0,2\pi]$
+\\Derivando $\frac{dz}{dt}=[-2Sen(t) + 2iCos(t)]dt = \frac{-2}{i}[Cos(t) + iSen(t)]dt$\\$= \frac{-2}{i} e^{it}dt$ $\forall$ $t\epsilon[0,2\pi]$
+\\Integrando $\int_0^{2\pi}[-2Sen(t) + 2iCos(t)]^2 \frac{-2}{i} e^{it}dt $ \\ *Usando la formula= $\int f(z)dz = \int z^2dz$*
+\\$\int_0^{2\pi}4[Cos(t)+iSen(t)]^2 \frac{-2}{i} e^{it}dt= \int_0^{2\pi}4(e^{it})^2\frac{-2}{i} e^{it}dt = \int_0^{2\pi}[4(e^{2it})(\frac{-2}{i} e^{it})]dt$
+\\$=\frac{-8}{i}\int_0^{2\pi}[(e^{2it})(e^{it})]dt=\frac{-8}{i}\int_0^{2\pi}(e^{3it})dt = \frac{-8}{i} [-\frac{i}{3} e^{3it}]| _0^{2\pi}$
+\\$= \frac{-8}{i} (-\frac{i}{3} * 0) = -\frac{8}{i} * 0 = 0 $
+
+\subsubsection*{Ejercicio 3}
+Evalue $\int_\gamma ydz$ donde $\gamma$ que es una linea que une a 1 con i:
+\\La linea tiene una formula similar a $y=mx+b$
+\\Por lo que la recta que necesitamos calcular es $z(t)=1-t+it$ $\forall$ $t\epsilon[-1,1]$
+\\$\frac{dz}{dt}=\frac{d([1-t]+it)}{dt}$ $\forall$ $t\epsilon[0,1]$
+\\$\int_0^1t(-1+i)dt = (-1+i)\int_0^1tdt = \frac{(-1+i)}{2}(1^2-0^2)=(-1+i)\frac{t^2}{2} = \frac{(-1+i)}{2}$ 
+
+\subsubsection*{Ejercicio 3}
+$\int_\gamma e^z$ donde $|z| = 1$ $\gamma$ une los puntos 1 e i
+\\$X=Cos(t)$ $||$ $Y=Sen(t)$
+\\$z(t)=Cos(t) + iSen(t)$ $\forall$ $t\epsilon[0,\frac{\pi}{2}]$
+\\$\frac{dz}{dt} = [-Sen(t)+iCos(t)]dt$
+\\$\int_0^{\frac{\pi}{2}} e^{Cos(t)+iSen(t)}[-Sen(t)+iCos(t)]dt$ si $u = Cos(t)+iSen(t)$
+\\$\int_0^{\frac{\pi}{2}}e^u du = e^i-e$
+\subsection*{Parametrizacion para limites complejos}
+Sea F(z) una funcion analitica, tal que $\frac{dF(z)}{dt}=f(z)$ en una region $R\subset\mathbb{C} $, si $\gamma$ es un arco spp definido por $z=z(t)$ $\forall$ $t\epsilon[a,b]$ contenido en R
+\\Entonces: $\int_\gamma f(z)dz = F(b) - F(a)$
+\\NOTA: Para la forma analitica se necesita que la derivada sea continua y se cumpla las ecuaciones de Cauchi-Riemman
+\\Si $\gamma = \gamma_1 \cup \gamma_2$(arco cerrado) entonces $\int_\gamma f(z)dz = 0$ 
+
+\subsubsection*{Problema $\#$1}
+Demuestre que $\int_\gamma \frac{1}{z} dz= 2\pi i$ donde el arco esta definido por $|z|=1$
+\\$x^2 + y^2 = 1$ y $z=x+iy$
+\\$x=Cos(t)$ $\forall$ $t\epsilon[0,2\pi]$
+\\$y=Sen(t)$ $\forall$ $t\epsilon[0,2\pi]$
+\\$z=Cos(t)+iSen(t)$
+\\$dz=[Cos(t)+iSen(t)]' = -Sen(t)+iCos(t)dt$
+\\$\int_0^{2\pi} \frac{-Sen(t)+iCos(t)dt}{Cos(t)+iSen(t)} = \int_0^{2\pi}e^{-it}*ie^{it}dt = i(t)_0^{2\pi} = 2i\pi$
+
+\subsubsection*{Problema $\#$2}
+Encuentra la $\int_{\gamma}\overline{Z}$ si el largo es un circulo de radio R, centrado en $Z_0 = a$
+\\Parametrizando: Circulo $=> (x-a_{rea})^2+(y-a_{img})^2=R^2$
+\\Proponiendo: $X = a_{rea} + RCos(t)$ y $Y = a_{img} + RSen(t)$ $\forall$ $t\epsilon[0, 2\pi]$ 
+\\Reemplazando: $Z  = (a_{rea} + RCos(t))+i(a_{img} + RSen(t))$
+\\Entonces: $\overline{Z}  = (a_{rea} + RCos(t))-i(a_{img} + RSen(t))$
+\\Derivando: $dz = [(a_{rea} + RCos(t))-i(a_{img} + RSen(t))]'dt$
+\\$= -RSen(t)-iRCos(t) dt$
+\\Integral de linea: $\int_0^{2\pi}[a_{rea} + RCos(t)]+i[a_{img} + RSen(t)][-RSen(t)-iRCos(t)] dt$
+\\$=\int_0^{2\pi}[a_{rea} + RCos(t)]+i[a_{img} + RSen(t)]-R[Sen(t)+iCos(t)] dt$
+\\Resultado (??): $=2\pi i R^2$
+
+\subsection*{Teorema de Cauchy}
+Sea $f(z)$ una funcion analitica, para todo z en el interior y sobre una curva $\gamma$ de borde Spp entonces:
+\\$\int_\gamma f(z)dz = 0$
+\subsubsection*{Problema $\#$3}
+Encuentre $\sigma_\gamma$ de $\frac{Z}{Z^2 + 4}$ donde $\gamma$ es el $|z| = 1$
+\\$\frac{df}{dz} = \frac{(1)(z^2+4)-(2z)(z)}{(z^2+4)^2} = \frac{4-z^2}{(z^2+4)^2}$  $\therefore$ Si es continua en $\gamma$ y en su interior.
+\\Teorema de Cauchy: $\int_\gamma\frac{z}{z^2+4}dz = 0$
+
+\subsubsection*{Comprobacion} 
+Parametrizando $|z|=1$ $= e^{it}$ $\forall$ $t \epsilon [0, 2\pi]$
+\\$dz = ie^{it}dt$
+\\$\int_0^{2\pi}\frac{e^{it}}{(e^{it})^2+4}ie^{it}dt = \int_0^{2\pi}\frac{ie^{2it}}{(e^{it})^2+4}dt = i\int_0^{2\pi}\frac{e^{2it}}{(e^{2it})+4}dt$
+\\Cambio de variable: $u=e^{2it}+4$ y $du = 2ie^{2it}$
+\\$\int_0^{2\pi}\frac{du}{2u} = \int_0^{2\pi}\frac{du}{2u} = \frac{1}{2}\int_0^{2\pi}\frac{du}{u} = \frac{ln(u)}{2}|_0^{2\pi} = \frac{ln[(e^{2it})+4]}{2}|_0^{2\pi}$
+\\$= \frac{ln[(e^{2i(2\pi)})+4]}{2} - \frac{ln[5]}{2} =  \frac{ln[1+4]}{2} - \frac{ln[5]}{2} = \frac{ln[5]}{2}-\frac{ln[5]}{2} = 0$
+
+\subsubsection*{Problema $\#$4}
+Encuentre $\frac{1}{2\pi}\int_0^{2\pi}\frac{R^2-r^2}{R^2-2RrCos(\theta)+r^2} d\theta = 1$
+\\HINT: $Re(\frac{R+re^{i\theta}}{R-re^{i\theta}}) = \rho$
+\\a 
+
+\end{document}
