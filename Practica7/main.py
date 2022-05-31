@@ -1,3 +1,19 @@
+import os
+from time import sleep
+def animacion(cadena, posicion):
+    animac = []
+    
+    if os.name =="nt": 
+        os.system("cls") 
+    else: 
+        os.system("clear") 
+    print(cadena)
+    for i in range(posicion-1):
+        animac.append(" ")
+    animac.append("^")
+    print(''.join(animac))
+    sleep(0.09)
+    
 def MANUAL():
     fin = 0
     estado = 1
@@ -15,9 +31,11 @@ def MANUAL():
     archivo = open("archivo.txt", "w+")
     cad = list('*'+ ''.join(aux) + '*' + ''.join(aux_2) + '*')
     print("Cadena original: "+ ''.join(cad))
+    sleep(5)
     
     while(fin != 1):
         try:
+            animacion(''.join(cad), j)
             archivo.write(''.join(cad) + " " + str(estado))
             archivo.write("\n")
             if (estado == 1):
